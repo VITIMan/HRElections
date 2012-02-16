@@ -1,0 +1,37 @@
+{# Template correspondiente al acceso de candidatos #}
+
+{% extends "base.html" %}
+
+{% block title %}
+HR ELECTIONS - Acceso candidatos
+{% endblock %}
+
+
+{% block content %}
+<div class="page-header">
+    <h1>Acceso Candidatos</h1>
+</div>
+<div class="row">
+    <div class="span8">
+        {# Formulario de acceso #}
+        <form class="well">
+            <div class="control-group">
+                <label class="control-label" for="email">Email</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge" id="name">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password">Contraseña</label>
+                <div class="controls">
+                    <input type="password" class="input-xlarge" id="abbreviation">
+                </div>
+            </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </div>
+    <div class="span4">
+        {# Text stuff #}
+    </div>
+</div>
+{% endblock %}

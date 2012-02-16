@@ -1,0 +1,56 @@
+{# Template correspondiente a la publicación de candidaturas #}
+
+{% extends "base.html" %}
+
+{% block title %}
+HR ELECTIONS - Publicación de candidatura
+{% endblock %}
+
+
+{% block content %}
+<div class="page-header">
+    <h1>Publicar candidatura <small>Preséntate al electorado</small></h1>
+</div>
+<div class="row">
+    <div class="span8">
+        {# Formulario de publicación #}
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Rellena el formulario</legend>
+                <div class="control-group">
+                    <label class="control-label" for="title">Nombre</label>
+                    <div class="controls">
+                        <input type="text" class="span5" id="name" placeholder="Nombre del partido">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="abbreviation">Siglas</label>
+                    <div class="controls">
+                        <input type="text" class="span5" id="abbreviation" placeholder="Siglas del partido">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="abbreviation" >Imagen/Foto</label>
+                    <div class="controls">
+                        <input type="text" class="span5" id="abbreviation" placeholder="Enlace a la imagen">
+                        <p class="help-block">Por aquí un enlace a una imagen, foto o algo que represente tu partido.</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="abbreviation">Programa electoral</label>
+                    <div class="controls">
+                        <textarea class="span5" id="description" rows="15" placeholder="Tus ideales, tus propuestas."></textarea>
+                    </div>
+
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="span4">
+        {# Texto de ayuda #}
+    </div>
+</div>
+{% endblock %}

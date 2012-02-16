@@ -1,0 +1,64 @@
+{# Template correspondiente a la home de la web #}
+
+{% extends "base.html" %}
+
+{% block title %}
+HR ELECTIONS - Vota a tu candidato
+{% endblock %}
+
+{% block content %}
+<header class="head">
+<h1>Elecciones #HermandadRobot</h1>
+</header>
+<div class="row">
+    {# Parte superior #}
+    <div class="span8">
+        {# Carousel #}
+        <div class="carousel">
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            ...
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
+        
+    </div>
+    <div class="span4">
+        {# TEXTO DE ENTRADA #}
+    </div>
+</div>
+{# Tarjetitas con los candidatos #}
+{# un for que pone una fila con dos span #}
+<div class="row">
+    <div class="span6">
+        {# Thumbnail, titulo, estrellas y texto #}
+        <div class="thumbnail">
+            <li class="span3">
+            {# Imagen #}
+            </li>
+            <li class="span3">
+            {# Titulo, descripción #}
+            </li>
+            <li class="span3">
+            {# Estrellas #}
+            </li>
+            <li class="span3">
+            {# Ranking #}
+            </li> 
+        </div>
+    </div>
+    <div class="span6">
+        {# Lo mismo que arriba #}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-carousel.js"></script>
+{% endblock %}

@@ -1,0 +1,5 @@
+#Elimino comodines
+*.swp
+*.pyc
+*.swo
+*.log

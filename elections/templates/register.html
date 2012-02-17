@@ -14,23 +14,23 @@ HR ELECTIONS - Registro candidatos
 <div class="row">
     <div class="span8">
         {# Formulario de registro #}
-        <form class="well">
+        <form class="well" method="post" action="/register/">{% csrf_token %}
             <div class="control-group">
                 <label class="control-label" for="email">Email</label>
                 <div class="controls">
-                    <input type="text" class="input-xlarge" id="name">
+                    {{ form.user }}
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="password">Contraseña</label>
                 <div class="controls">
-                    <input type="password" class="input-xlarge" id="abbreviation">
+                    {{ form.password }}
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="password">Repetir Contraseña</label>
                 <div class="controls">
-                    <input type="password" class="input-xlarge" id="abbreviation">
+                    {{ form.password_rep }}
                 </div>
             </div>
                     <button type="submit" class="btn btn-primary">Registrar</button>

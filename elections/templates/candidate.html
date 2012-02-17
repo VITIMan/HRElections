@@ -9,12 +9,16 @@ HR ELECTIONS - ¡¡¡¡TITULO DEL CANDIDATO!!!!
 
 {% block content %}
 <div class="page-header">
-    <h1>NOMBRE DEL CANDIDATO <small> Siglas</small></h1>
+    <h1>{{ candidate.name }} <small> {{ candidate.abbreviation }}</small></h1>
 </div>
 <div class="row">
     <div class="span8">
         {# Imagen #}
+        <a href="#" class="thumbnail">
+            <img src="{{ candidate.image }}">
+        </a>
         {# Descripción #}
+        {{ cadndidate.description}}
     </div>
     <div class="span4">
         {# Comentarios #}
@@ -23,13 +27,13 @@ HR ELECTIONS - ¡¡¡¡TITULO DEL CANDIDATO!!!!
             <div class="control-group">
                 <label class="control-label" for="email">Email</label>
                 <div class="controls">
-                    <input type="text" class="input-xlarge" id="name">
+                    {{ form.name }}
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="abbreviation">Comentario</label>
                 <div class="controls">
-                    <textarea class="input-xlarge" id="description" rows="3"></textarea>
+                    {{ form.text }}
                 </div>
 
             </div>

@@ -14,44 +14,69 @@ HR ELECTIONS - Vota a tu candidato
     {# Parte superior #}
     <div class="span8">
         {# Carousel #}
-        <div class="carousel">
+        <div id="carou" class="carousel slide">
           <!-- Carousel items -->
           <div class="carousel-inner">
-            ...
+            <div class="item active">
+                <img src="{{ STATIC_URL }}c1.jpg">
+                <div class="carousel-caption">
+                    <h4>Puaj, para ti</h4>
+                    <p>Come queso, y come limonada. Venga rápido que va a explotar</p>
+                </div>
+            </div> 
+            
+            <div class="item">
+                <img src="{{ STATIC_URL }}c2.jpg">
+                <div class="carousel-caption">
+                    <h4>Puaj, para ti</h4>
+                    <p>Come queso, y come limonada. Venga rápido que va a explotar</p>
+                </div>
+            </div> 
+
+            <div class="item">
+                <img src="{{ STATIC_URL }}c3.jpg">
+                <div class="carousel-caption">
+                    <h4>Puaj, para ti</h4>
+                    <p>Come queso, y come limonada. Venga rápido que va a explotar</p>
+                </div>
+            </div> 
           </div>
           <!-- Carousel nav -->
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          <a class="carousel-control left" href="#carou" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#carou" data-slide="next">&rsaquo;</a>
         </div>
         
     </div>
     <div class="span4">
-        {# TEXTO DE ENTRADA #}
+        <h2>LOREM IPSUM JODER</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus, risus ac vehicula fermentum, magna orci feugiat libero, vel fermentum dui quam venenatis dui. Nulla facilisi. Suspendisse potenti. Cras ac nulla massa, sit amet lacinia lacus. Nunc pellentesque augue sed elit hendrerit imperdiet ornare risus imperdiet. Vivamus eu quam eget orci suscipit volutpat. Duis ultrices, tellus sed euismod dapibus, orci lectus vestibulum enim, in porta massa erat a magna.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus, risus ac vehicula fermentum, magna orci feugiat libero, vel fermentum dui quam venenatis dui. Nulla facilisi. Suspendisse potenti. Cras ac nulla massa, sit amet lacinia lacus.</p>
     </div>
 </div>
 {# Tarjetitas con los candidatos #}
 {# un for que pone una fila con dos span #}
 <div class="row">
-    <div class="span6">
-        {# Thumbnail, titulo, estrellas y texto #}
+    <ul class="thumbnails">
+    {% for candidate in candidates %}
+    <li class="span4">
         <div class="thumbnail">
-            <li class="span3">
+        {# Thumbnail, titulo, estrellas y texto #}
             {# Imagen #}
-            </li>
-            <li class="span3">
-            {# Titulo, descripción #}
-            </li>
-            <li class="span3">
-            {# Estrellas #}
-            </li>
-            <li class="span3">
-            {# Ranking #}
-            </li> 
+            <img src="{{ candidate.image }}">
+            <div class="caption">
+            <p>
+            ESTRELLAS
+            </p>
+            <h4>{{ candidate.name }}</h4>
+            <p>{{ candidate.description }}</p>
+            <p>
+            Ranking
+            </p> 
+            </div>
         </div>
-    </div>
-    <div class="span6">
-        {# Lo mismo que arriba #}
-    </div>
+    </li>
+    {% endfor %}
+    </ul>
 </div>
 {% endblock %}
 
@@ -60,5 +85,7 @@ HR ELECTIONS - Vota a tu candidato
 
 {% block javascript %}
 <script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-transition.js"></script>
 <script src="{{ STATIC_URL }}js/bootstrap-carousel.js"></script>
+<script src="{{ STATIC_URL }}js/index.js"></script>
 {% endblock %}

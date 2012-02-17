@@ -14,7 +14,6 @@ def navigation_bar(request):
     #        selected = 'my_offers'
     #elif request.path.split('/')[1] == 'browsejobs':
     #    selected = ''
-    #return {'authenticated': request.user.is_authenticated(),
-    #        'username': request.user.username,
-    #        'selected': selected,} 
+    return {'authenticated': request.user.is_authenticated(),
+            'username': request.user.username,}
 

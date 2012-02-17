@@ -32,15 +32,25 @@
                   <li class="">
                     <a href="/">Inicio</a>
                   </li>
+                  {% if user.is_authenticated %}
+                  <li class="">
+                    <a href="/publish/">Publicar/Editar candidatura</a>
+                  </li>
+                  {% endif %}
               </ul>
               <ul class="nav pull-right">
+                  {% if user.is_authenticated %}
+                  <li class="">
+                    <a href="/logout/">Salir</a>
+                  </li>
+                  {% else %}
                   <li class="">
                   <a href="/login/">Entrar</a>
                   </li>
                   <li class="">
                   <a href="/register/">Registro</a>
                   </li> 
-                  {# Subir/Editar candidatura #}
+                  {% endif %}
               </ul>
               </div>
             </div>

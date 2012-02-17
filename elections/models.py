@@ -17,14 +17,15 @@ class Candidate(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nombre del partido")
     abbreviation = models.CharField(max_length=255, verbose_name=u"Siglas del partido")
     description = models.TextField(help_text="Descripción del partido")
+    image = models.URLField(default='',verbose_name="Url de la imagen")
     #email = models.EmailField()
     user = models.ForeignKey(User, unique=True)
     published_at = models.DateTimeField(auto_now_add = True, help_text="Fecha de publicación")
 
-class Image(models.Model):
-    candidate = models.ForeignKey(Candidate)
-    url = models.URLField(default = '', help_text= "Url de la imagen")
-    type = models.CharField(max_length=255, verbose_name="Tipo, vídeo o imagen")
+#class Image(models.Model):
+#    candidate = models.ForeignKey(Candidate)
+#    url = models.URLField(default = '', help_text= "Url de la imagen")
+#    type = models.CharField(max_length=255, verbose_name="Tipo, vídeo o imagen")
 
 class Comment(models.Model):
     candidate = models.ForeignKey(Candidate)

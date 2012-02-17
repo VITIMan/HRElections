@@ -14,37 +14,39 @@ HR ELECTIONS - Publicación de candidatura
 <div class="row">
     <div class="span8">
         {# Formulario de publicación #}
-        <form class="form-horizontal">
+        <form class="form-horizontal" method="post" action="/publish/">{% csrf_token %}
             <fieldset>
                 <legend>Rellena el formulario</legend>
                 <div class="control-group">
                     <label class="control-label" for="title">Nombre</label>
                     <div class="controls">
-                        <input type="text" class="span5" id="name" placeholder="Nombre del partido">
+                        {{ form.name }}
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="abbreviation">Siglas</label>
                     <div class="controls">
-                        <input type="text" class="span5" id="abbreviation" placeholder="Siglas del partido">
+                        {{ form.abbreviation }}
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="abbreviation" >Imagen/Foto</label>
+                    <label class="control-label" for="image" >Imagen/Foto</label>
                     <div class="controls">
-                        <input type="text" class="span5" id="abbreviation" placeholder="Enlace a la imagen">
+                        {{ form.image }}
                         <p class="help-block">Por aquí un enlace a una imagen, foto o algo que represente tu partido.</p>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="abbreviation">Programa electoral</label>
                     <div class="controls">
-                        <textarea class="span5" id="description" rows="15" placeholder="Tus ideales, tus propuestas."></textarea>
+                        {{ form.description }}
                     </div>
 
                 </div>
+                {{ form.editing }}
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" class="btn btn-danger">Borrar candidatura</button>
                 </div>
             </fieldset>
         </form>

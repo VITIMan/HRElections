@@ -126,6 +126,10 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+        'django.contrib.auth.context_processors.auth',
+        'django.core.context_processors.static',
+        )
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.

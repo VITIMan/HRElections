@@ -40,6 +40,9 @@
               </ul>
               <ul class="nav pull-right">
                   {% if user.is_authenticated %}
+                  <li class="active">
+                  <a href="#">{{ user }}</a>
+                  </li>
                   <li class="">
                     <a href="/logout/">Salir</a>
                   </li>

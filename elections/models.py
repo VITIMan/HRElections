@@ -31,6 +31,7 @@ class Comment(models.Model):
     candidate = models.ForeignKey(Candidate)
     name = models.CharField(max_length=255, verbose_name="Autor")
     text = models.TextField(help_text="Comentario")
+    published_at = models.DateTimeField(auto_now_add = True, help_text="Fecha de publicación")
 
 class Votes(models.Model):
     candidate = models.ForeignKey(Candidate)

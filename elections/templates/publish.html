@@ -11,35 +11,66 @@ HR ELECTIONS - Publicación de candidatura
 <div class="page-header">
     <h1>Publicar candidatura <small>Preséntate al electorado</small></h1>
 </div>
+{% if published %}
+<div class="alert alert-success">
+    Tu candidatura ha sido publicada/editada.
+</div>
+{% endif %}
+
 <div class="row">
     <div class="span8">
         {# Formulario de publicación #}
         <form class="form-horizontal" method="post" action="/publish/">{% csrf_token %}
+            {% if form.non_field_errors and not new %}
+            <div id="alert error" class="alert alert-block alert-error fade in">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
             <fieldset>
                 <legend>Rellena el formulario</legend>
-                <div class="control-group">
+                <div class="control-group{% if form.name.errors and not new %} error{% endif %}">
                     <label class="control-label" for="title">Nombre</label>
                     <div class="controls">
                         {{ form.name }}
+                        {% if not new %}
+                        {% for error in form.name.errors %}
+                        <span class="help-inline">{{ error|escape }}</span>
+                        {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group{% if form.abbreviation.errors and not new %} error{% endif %}">
                     <label class="control-label" for="abbreviation">Siglas</label>
                     <div class="controls">
                         {{ form.abbreviation }}
+                        {% if not new %}
+                        {% for error in form.abbreviation.errors %}
+                        <span class="help-inline">{{ error|escape }}</span>
+                        {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group{% if form.image.errors and not new %} error{% endif %}">
                     <label class="control-label" for="image" >Imagen/Foto</label>
                     <div class="controls">
                         {{ form.image }}
+                        {% if not new %}
+                        {% for error in form.image.errors %}
+                        <span class="help-inline">{{ error|escape }}</span>
+                        {% endfor %}
+                        {% endif %}
                         <p class="help-block">Por aquí un enlace a una imagen, foto o algo que represente tu partido.</p>
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group{% if form.description.errors and not new %} error{% endif %}">
                     <label class="control-label" for="abbreviation">Programa electoral</label>
                     <div class="controls">
                         {{ form.description }}
+                        {% if not new %}
+                        {% for error in form.description.errors %}
+                        <span class="help-inline">{{ error|escape }}</span>
+                        {% endfor %}
+                        {% endif %}
                     </div>
 
                 </div>

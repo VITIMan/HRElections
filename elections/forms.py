@@ -33,8 +33,8 @@ class LoginForm(forms.Form):
 
 class RegisterForm(forms.Form):
     user = forms.EmailField(max_length=255, widget=forms.TextInput(attrs={'class':'span5'}))
-    password = forms.CharField(max_length=255, widget=forms.PasswordInput(attrs={'class':'span5'}))
-    password_rep = forms.CharField(max_length=255, widget=forms.PasswordInput(attrs={'class':'span5'}))
+    password = forms.CharField(min_length=6,max_length=255, widget=forms.PasswordInput(attrs={'class':'span5'}))
+    password_rep = forms.CharField(min_length=6,max_length=255, widget=forms.PasswordInput(attrs={'class':'span5'}))
 
     def clean_user(self):
         value = self.cleaned_data['user']
@@ -46,7 +46,7 @@ class RegisterForm(forms.Form):
 
     def clean(self):
         cleaned_data = super(RegisterForm, self).clean()
-        value = self.cleaned_data['password']
+        value = cleaned_data.get('password')
         rep_value = cleaned_data.get('password_rep')
         if value != rep_value:
             raise forms.ValidationError('Deben coincidir las contraseñas')

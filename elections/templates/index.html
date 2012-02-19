@@ -12,6 +12,19 @@ HR ELECTIONS - Vota a tu candidato
 </header>
 <div class="row">
     {# Parte superior #}
+    {% if not vote_well %}
+    <div id="vote_well"class="alert alert-block alert-error fade in">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <h4 class="alert-heading">¡Vota bien! No te inventes cosas</h4>
+    </div>
+    {% endif %}
+    {% if vote_success %}
+    <div id="vote_well"class="alert alert-block alert-success fade in">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <h4 class="alert-heading">Has votado correctamente</h4>
+    </div>
+    {% endif %}
+
     <div class="span8">
         {# Carousel #}
         <div id="carou" class="carousel slide">
@@ -64,15 +77,17 @@ HR ELECTIONS - Vota a tu candidato
             {# Imagen #}
             <img src="{{ candidate.image }}">
             <div class="caption">
+                {% if already_voted == candidate.id %}
+                <span class="label label-important">Ya has votado.</span>
+                {% else %}
                 <fieldset class="rating">
-                    {# PON UNOS HREF CON GET DE LA ESTRELLA Y CANDIDATO JODER #}
-                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 estrellas</label>
-                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 estrellas</label>
-                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 estrellas</label>
-                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 estrellas</label>
-                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 estrella</label>
+                    <a title="5 estrellas" href="/?id={{ candidate.id }}&v=5">5 estrellas</a>
+                    <a title="4 estrellas" href="/?id={{ candidate.id }}&v=4">4 estrellas</a>
+                    <a title="3 estrellas" href="/?id={{ candidate.id }}&v=3">3 estrellas</a>
+                    <a title="2 estrellas" href="/?id={{ candidate.id }}&v=2">2 estrellas</a>
+                    <a title="1 estrella" href="/?id={{ candidate.id }}&v=1">1 estrella</a>
                 </fieldset>
-                {# ID DEL CANDIDATO #}
+                {% endif %}
             <h4>{{ candidate.name }}</h4>
             <p>{{ candidate.description }}</p>
             <p class="ranking">
@@ -92,6 +107,7 @@ HR ELECTIONS - Vota a tu candidato
 {% block javascript %}
 <script src="{{ STATIC_URL }}js/jquery.js"></script>
 <script src="{{ STATIC_URL }}js/bootstrap-transition.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-alert.js"></script>
 <script src="{{ STATIC_URL }}js/bootstrap-carousel.js"></script>
 <script src="{{ STATIC_URL }}js/index.js"></script>
 {% endblock %}

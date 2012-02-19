@@ -15,17 +15,27 @@ HR ELECTIONS - Acceso candidatos
     <div class="span8">
         {# Formulario de acceso #}
         <form class="well" method="post" action="/login/">{% csrf_token %}
-
-            <div class="control-group">
+            {% if form.non_field_errors %}
+            <div id="alert error" class="alert alert-block alert-error fade in">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            <div class="control-group{% if form.user.errors %} error{% endif %}">
                 <label class="control-label" for="email">Email</label>
                 <div class="controls">
                     {{ form.user }}
+                    {% for error in form.user.errors %}
+                    <span class="help-inline">{{ error|escape }}</span>
+                    {% endfor %}
                 </div>
             </div>
-            <div class="control-group">
+            <div class="control-group{% if form.password.errors %} error{% endif %}">
                 <label class="control-label" for="password">Contraseña</label>
                 <div class="controls">
                     {{ form.password }}
+                    {% for error in form.password.errors %}
+                    <span class="help-inline">{{ error|escape }}</span>
+                    {% endfor %}
                 </div>
             </div>
                     <button type="submit" class="btn btn-primary">Entrar</button>
@@ -37,4 +47,7 @@ HR ELECTIONS - Acceso candidatos
         {# Text stuff #}
     </div>
 </div>
+{% endblock %}
+
+{% block javascript %}
 {% endblock %}

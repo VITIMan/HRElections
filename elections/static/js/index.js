@@ -1,3 +1,3 @@
 $(document).ready(function(){
-        $('#carou').carousel()
+        $('#carou').carousel();
 });

@@ -13,17 +13,19 @@ HR ELECTIONS - ¡¡¡¡TITULO DEL CANDIDATO!!!!
 </div>
 <div class="row">
     <div class="span8">
+        <div class="thumbnail">
         {# Imagen #}
-        <a href="#" class="thumbnail">
             <img src="{{ candidate.image }}">
-        </a>
         {# Descripción #}
-        {{ cadndidate.description}}
+            <div class="caption">
+            {{ candidate.description}}
+            </div>
+        </div>
     </div>
     <div class="span4">
         {# Comentarios #}
         {# Formulario de comentario #}
-        <form class="well">
+        <form class="well" method="post" action="/candidate/">
             <div class="control-group">
                 <label class="control-label" for="email">Email</label>
                 <div class="controls">
@@ -40,7 +42,9 @@ HR ELECTIONS - ¡¡¡¡TITULO DEL CANDIDATO!!!!
             <button type="submit" class="btn btn-primary">Comentar</button>
         </form>
         {# Número de comentarios #}
-        {# FOR CON LOS COMENTARIOS #}
+        {{ comments.length }}
+        {% for comment in comments %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

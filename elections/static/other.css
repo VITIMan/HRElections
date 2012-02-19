@@ -35,7 +35,7 @@ body {
     clip:rect(0,0,0,0);
 }
 
-.rating:not(:checked) > label {
+.rating:not(:checked) > a {
     float:right;
     width:1em;
     padding:0 .1em;
@@ -48,7 +48,7 @@ body {
     text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
 }
 
-.rating:not(:checked) > label:before {
+.rating:not(:checked) > a:before {
     content: '★ ';
 }
 /*
@@ -58,10 +58,11 @@ body {
 }
     */
 
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
+.rating:not(:checked) > a:hover,
+.rating:not(:checked) > a:hover ~ a {
     color: gold;
     text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    text-decoration: none;
 }
 /*
 .rating > input:checked + label:hover,
@@ -73,7 +74,7 @@ body {
     text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
 }*/
 
-.rating > label:active {
+.rating > a:active {
     position:relative;
     top:2px;
     left:2px;

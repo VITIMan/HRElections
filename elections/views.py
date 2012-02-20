@@ -42,9 +42,6 @@ def index(request):
         except Candidate.DoesNotExist:
             vote_well = False
     candidates = Candidate.objects.all()
-    for candidate in candidates:
-        print candidate.id
-        print candidate.description
     return render_to_response('index.html', {
         'candidates':candidates,
         'already_voted':already_voted,

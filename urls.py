@@ -4,7 +4,7 @@ from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-elections_patterns = patterns('elections.views',
+elections_patterns = patterns('hr_elections.elections.views',
 
     (r'^$', 'index'),
     (r'^login/', 'login_user'),

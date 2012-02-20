@@ -1,6 +1,6 @@
 # Django settings for hr_elections project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -12,9 +12,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'hr_elections',                      # Or path to database file if using sqlite3.
-        'USER': 'admin',                      # Not used with sqlite3.
-        'PASSWORD': 'P0s0t147369',                  # Not used with sqlite3.
+        'NAME': 'vitiman_hr_elec',                      # Or path to database file if using sqlite3.
+        'USER': 'vitiman_hr_elec',                      # Not used with sqlite3.
+        'PASSWORD': 'murcia',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -58,6 +58,7 @@ MEDIA_URL = ''
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = ''
 
+STATICFILES_DIRS=('/home/vitiman/webapps/static',)
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
@@ -152,3 +153,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from local_settings import *
+except:
+    pass

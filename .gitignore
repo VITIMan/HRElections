@@ -3,3 +3,4 @@
 *.pyc
 *.swo
 *.log
+local_settings.py

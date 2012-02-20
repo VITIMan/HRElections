@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-HR ELECTIONS - ¡¡¡¡TITULO DEL CANDIDATO!!!!
+HR ELECTIONS - {{ candidate.name }}
 {% endblock %}
 
 
@@ -12,38 +12,56 @@ HR ELECTIONS - ¡¡¡¡TITULO DEL CANDIDATO!!!!
     <h1>{{ candidate.name }} <small> {{ candidate.abbreviation }}</small></h1>
 </div>
 <div class="row">
-    <div class="span8">
+    <div class="span7">
         <div class="thumbnail">
         {# Imagen #}
             <img src="{{ candidate.image }}">
         {# Descripción #}
             <div class="caption">
-            {{ candidate.description}}
+            {{ candidate.description|safe}}
             </div>
         </div>
     </div>
-    <div class="span4">
+    <div class="span5">
         {# Comentarios #}
         {# Formulario de comentario #}
-        <form class="well" method="post" action="/candidate/">
-            <div class="control-group">
-                <label class="control-label" for="email">Email</label>
+        <form class="well" method="post" action="{% url candidate candidate.id %}">{% csrf_token %}
+            {% if form.non_field_errors %}
+            <div id="alert error" class="alert alert-block alert-error fade in">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            <div class="control-group{% if form.name.errors %} error{% endif %}">
+                <label class="control-label" for="email">Nombre</label>
                 <div class="controls">
                     {{ form.name }}
+                    {% for error in form.name.errors %}
+                    <span class="help-inline">{{ error|escape }}</span>
+                    {% endfor %}
                 </div>
             </div>
-            <div class="control-group">
+            <div class="control-group{% if form.text.errors %} error{% endif %}">
                 <label class="control-label" for="abbreviation">Comentario</label>
                 <div class="controls">
                     {{ form.text }}
+                    {% for error in form.text.errors %}
+                    <span class="help-inline">{{ error|escape }}</span>
+                    {% endfor %}
                 </div>
 
             </div>
             <button type="submit" class="btn btn-primary">Comentar</button>
         </form>
         {# Número de comentarios #}
-        {{ comments.length }}
+        <h3>{{ comments|length }} comentarios</h3>
         {% for comment in comments %}
+        <div class="well">
+        <h4>{{ comment.name }} dice:</h4>
+        <div class="comment_text">
+        {{ comment.text|safe }}
+        </div>
+        <span class="dateformat">{{ comment.published_at }}</span>
+        </div>
         {% endfor %}
     </div>
 </div>

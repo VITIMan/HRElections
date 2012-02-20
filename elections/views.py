@@ -155,12 +155,11 @@ def _get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
-def candidate(request):
-    id = request.GET.get('id', 0)
+def candidate(request, id):
     
     try:
         candidate=get_object_or_404(Candidate, pk=id)
-        comments = Comment.objects.filter(candidate=candidate).order_by('published_at')
+        comments = Comment.objects.filter(candidate=candidate).order_by('-published_at')
     except Candidate.DoesNotExist:
         pass #404
 
@@ -168,7 +167,14 @@ def candidate(request):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            pass
+            name = form.cleaned_data['name']
+            text = form.cleaned_data['text']
+            comment = Comment(candidate=candidate,
+                name = name,
+                text = text,
+                )
+            comment.save()
+            form = CommentForm()   
     else: 
         form = CommentForm()
     return render_to_response('candidate.html', {

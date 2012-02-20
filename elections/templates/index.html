@@ -88,8 +88,8 @@ HR ELECTIONS - Vota a tu candidato
                     <a title="1 estrella" href="/?id={{ candidate.id }}&v=1">1 estrella</a>
                 </fieldset>
                 {% endif %}
-            <h4>{{ candidate.name }}</h4>
-            <p>{{ candidate.description }}</p>
+                <h4><a href="{% url candidate candidate.id %}">{{ candidate.name }}</a></h4>
+            <p>{{ candidate.description|striptags|truncatewords:"20" }}</p>
             <p class="ranking">
             RANKING
             </p>

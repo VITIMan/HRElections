@@ -17,6 +17,9 @@ body {
 .thumbnail img{
     height:163px;
 }
+.dateformat span{
+    text-align:right;
+}
 .ranking{
     text-align: right;
 }

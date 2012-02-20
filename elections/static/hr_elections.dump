@@ -140,7 +140,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +149,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'viti','','','vitiman@gmail.com','sha1$9c5bc$9ab6f3ad514a32c3036f5ac222bfc00fe6cb916e',1,1,1,'2012-02-17 12:59:44','2012-02-17 12:59:44'),(3,'lalala@gmail.com','','','lalala@gmail.com','sha1$e73a5$1459c6b63a821399b19dfc0afc3ded2d99e02b27',0,1,0,'2012-02-17 23:11:04','2012-02-17 14:21:30'),(4,'vvv@vvv.com','','','vvv@vvv.com','sha1$cb72c$f87f60c739298c1e6c4689fd8a4298c0cc8ccd69',0,1,0,'2012-02-18 01:41:51','2012-02-17 18:34:30'),(5,'vvvv@vvvv.com','','','vvvv@vvvv.com','sha1$1f34e$2896bc28dd93de5482f7ddc979b45d6964eb64db',0,1,0,'2012-02-17 18:36:48','2012-02-17 18:36:39'),(6,'vvvvv@vvvvv.com','','','vvvvv@vvvvv.com','sha1$41003$775567f48a092008e57c560b2a3fa499d4d856dd',0,1,0,'2012-02-17 18:42:43','2012-02-17 18:42:32'),(7,'pap@pap.com','','','pap@pap.com','sha1$f7017$64089c9a0d36e9cf3453cd20192b434be9356c95',0,1,0,'2012-02-17 19:57:08','2012-02-17 19:56:56');
+INSERT INTO `auth_user` VALUES (1,'viti','','','vitiman@gmail.com','sha1$9c5bc$9ab6f3ad514a32c3036f5ac222bfc00fe6cb916e',1,1,1,'2012-02-17 12:59:44','2012-02-17 12:59:44'),(3,'lalala@gmail.com','','','lalala@gmail.com','sha1$e73a5$1459c6b63a821399b19dfc0afc3ded2d99e02b27',0,1,0,'2012-02-20 00:48:31','2012-02-17 14:21:30'),(4,'vvv@vvv.com','','','vvv@vvv.com','sha1$cb72c$f87f60c739298c1e6c4689fd8a4298c0cc8ccd69',0,1,0,'2012-02-18 01:41:51','2012-02-17 18:34:30'),(5,'vvvv@vvvv.com','','','vvvv@vvvv.com','sha1$1f34e$2896bc28dd93de5482f7ddc979b45d6964eb64db',0,1,0,'2012-02-17 18:36:48','2012-02-17 18:36:39'),(6,'vvvvv@vvvvv.com','','','vvvvv@vvvvv.com','sha1$41003$775567f48a092008e57c560b2a3fa499d4d856dd',0,1,0,'2012-02-17 18:42:43','2012-02-17 18:42:32'),(7,'pap@pap.com','','','pap@pap.com','sha1$f7017$64089c9a0d36e9cf3453cd20192b434be9356c95',0,1,0,'2012-02-17 19:57:08','2012-02-17 19:56:56'),(10,'pako@pako.com','','','pako@pako.com','sha1$a073b$dab64f086df0be85746d34835d51b3e981103350',0,1,0,'2012-02-19 18:09:30','2012-02-19 18:07:32');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +256,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('972f8dca76d3ac7010b16b71f1fa0322','YTNlODRhMGE4NDA5YzVmMjVkMDljNTZiNjVkOTdmNDRmZGFhMDQ1YjqAAn1xAS4=\n','2012-03-02 18:49:42'),('250c4555a318c03d00ad0411ba6e5d59','YTNlODRhMGE4NDA5YzVmMjVkMDljNTZiNjVkOTdmNDRmZGFhMDQ1YjqAAn1xAS4=\n','2012-03-03 01:42:00'),('eacdfdae0ff4bbd666788671187a1b16','YTNlODRhMGE4NDA5YzVmMjVkMDljNTZiNjVkOTdmNDRmZGFhMDQ1YjqAAn1xAS4=\n','2012-03-03 01:45:57');
+INSERT INTO `django_session` VALUES ('972f8dca76d3ac7010b16b71f1fa0322','YTNlODRhMGE4NDA5YzVmMjVkMDljNTZiNjVkOTdmNDRmZGFhMDQ1YjqAAn1xAS4=\n','2012-03-02 18:49:42'),('250c4555a318c03d00ad0411ba6e5d59','YTNlODRhMGE4NDA5YzVmMjVkMDljNTZiNjVkOTdmNDRmZGFhMDQ1YjqAAn1xAS4=\n','2012-03-03 01:42:00'),('2399526f37b2d1d8b49691d1133c9ef9','N2QzYzcwYjEwZDNiNWQ3NzlhNjYyZGI1NmUzZTdiNjg3OTVkZDRhYjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQSKAQN1Lg==\n','2012-03-05 00:48:31');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,7 +302,7 @@ CREATE TABLE `elections_candidate` (
   `published_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,7 +311,7 @@ CREATE TABLE `elections_candidate` (
 
 LOCK TABLES `elections_candidate` WRITE;
 /*!40000 ALTER TABLE `elections_candidate` DISABLE KEYS */;
-INSERT INTO `elections_candidate` VALUES (2,'LOOOOL','LOOOOOOOOL','ewjfherofnhervjbntrbnerbntrij rinjipobj bnbnjgr bjpornbp grnbipbbingrb ngrbijngrbi ngrip ernbij nb','http://fc05.deviantart.net/fs71/i/2011/129/1/7/fluttershy_at_the_gala_by_shelltoontv-d3fzoui.png',3,'2012-02-17 16:39:00'),(3,'Doorouraeca','LOL','Zysae mohace sequpekyz taro fypookefruf foucechynodea muche thawoogudou booz pinicysoutu nuheakebixoo keasoofash frure gysihoudaem jeapechamoo doug poohuf foupougaesh tukeacyhish kipetepe thoo.','http://images1.wikia.nocookie.net/__cb20111116235011/callofduty/images/1/18/My_little_pony_friendship_is_magic_rarity.jpeg',4,'2012-02-17 18:35:26'),(4,'Veazabif','Tufoofa','Nilaegoury sapeadeape hithelougaek kubou koofeaduv seawisheadoo frouxufoucou fajoucucho gehadijedyla leakalilare paedymycae boumovog vafupaeni nith pookuboo nounumoug chuj cagecihuseb taku wadae besilef gylalibeab vaegumyjaki.','http://2.bp.blogspot.com/-RjEsO4aHFgI/TqcySaqJBMI/AAAAAAAAAR8/S2FixIB7l48/s1600/mlpfim-character-rainbowdash-large-570x402.jpg',5,'2012-02-17 18:38:43'),(5,'Joqudupo','Moukool','Xuzoo nisugy michoqevoo meazogish vitesocuqea hyc rakikiki qydekide susoshoco fygadyra pyfrooxigo nouveabak deatudigexut.','http://1.bp.blogspot.com/_MdD8lH4Rf9o/TSl-xQjSL3I/AAAAAAAABNA/47xOPdeyZJ8/s1600/mlpfim-character-pinkie-pie-large-570x402.jpg',6,'2012-02-17 18:43:31'),(6,'Notitofe','Xae','Syc frootenouz qeamith gof houb dejeso toogi dakubae.','http://images4.wikia.nocookie.net/__cb20101228202845/mlp/images/archive/8/86/20110730233446!Applejack.jpg',7,'2012-02-17 19:57:43');
+INSERT INTO `elections_candidate` VALUES (2,'LOOOOL','LOOOOOOOOL','<p>ewjfherofnhervjbntrbnerbntrij rinjipobj bnbnjgr bjpornbp grnbipbbingrb ngrbijngrbi ngrip ernbij nb</p>\r\n<p>ewjfherofnhervjbntrbnerbntrij rinjipobj bnbnjgr bjpornbp grnbipbbingrb ngrbijngrbi ngrip ernbij nb</p>\r\n<ul>\r\n<li>dwjdokwd 1</li>\r\n</ul>\r\n','http://fc05.deviantart.net/fs71/i/2011/129/1/7/fluttershy_at_the_gala_by_shelltoontv-d3fzoui.png',3,'2012-02-17 16:39:00'),(3,'Doorouraeca','LOL','Zysae mohace sequpekyz taro fypookefruf foucechynodea muche thawoogudou booz pinicysoutu nuheakebixoo keasoofash frure gysihoudaem jeapechamoo doug poohuf foupougaesh tukeacyhish kipetepe thoo.','http://images1.wikia.nocookie.net/__cb20111116235011/callofduty/images/1/18/My_little_pony_friendship_is_magic_rarity.jpeg',4,'2012-02-17 18:35:26'),(4,'Veazabif','Tufoofa','Nilaegoury sapeadeape hithelougaek kubou koofeaduv seawisheadoo frouxufoucou fajoucucho gehadijedyla leakalilare paedymycae boumovog vafupaeni nith pookuboo nounumoug chuj cagecihuseb taku wadae besilef gylalibeab vaegumyjaki.','http://2.bp.blogspot.com/-RjEsO4aHFgI/TqcySaqJBMI/AAAAAAAAAR8/S2FixIB7l48/s1600/mlpfim-character-rainbowdash-large-570x402.jpg',5,'2012-02-17 18:38:43'),(5,'Joqudupo','Moukool','Xuzoo nisugy michoqevoo meazogish vitesocuqea hyc rakikiki qydekide susoshoco fygadyra pyfrooxigo nouveabak deatudigexut.','http://1.bp.blogspot.com/_MdD8lH4Rf9o/TSl-xQjSL3I/AAAAAAAABNA/47xOPdeyZJ8/s1600/mlpfim-character-pinkie-pie-large-570x402.jpg',6,'2012-02-17 18:43:31'),(6,'Notitofe','Xae','Syc frootenouz qeamith gof houb dejeso toogi dakubae.','http://images4.wikia.nocookie.net/__cb20101228202845/mlp/images/archive/8/86/20110730233446!Applejack.jpg',7,'2012-02-17 19:57:43'),(7,'Estoy probando lol','OTRA CANDIDATURA','cwekcnwekcnewk ckevj ejv eijverijv rpivj wdkc erijpvei evipj cijpebipjv reipjv erpvj ripvj eivj revipj evpjirev\r\n\r\nvojerbvireqjvirqv ewcnerqvirnqviperubnviqervbqwie\r\n\r\nerwovnqreivbqreivbqeriv\r\n\r\nwoviqreiberi','http://i0.kym-cdn.com/photos/images/original/000/122/114/130232443562.gif?1305073704',10,'2012-02-19 18:20:33');
 /*!40000 ALTER TABLE `elections_candidate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,9 +327,9 @@ CREATE TABLE `elections_comment` (
   `candidate_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `text` longtext NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `elections_comment_6c1886de` (`candidate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `published_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -338,6 +338,7 @@ CREATE TABLE `elections_comment` (
 
 LOCK TABLES `elections_comment` WRITE;
 /*!40000 ALTER TABLE `elections_comment` DISABLE KEYS */;
+INSERT INTO `elections_comment` VALUES (1,5,'Viti','Hola','2012-02-20 00:27:30'),(2,5,'Pap','Hola Hola','2012-02-20 00:27:40'),(3,5,'Ojete','Huele a culo','2012-02-20 00:27:59'),(4,5,'Pepe','Qué guay.\r\n\r\nXDD','2012-02-20 00:28:15'),(5,5,'Probando','Estoy\r\n\r\nprobando\r\n\r\n<b>Joder</b>','2012-02-20 00:41:58'),(6,5,'Probando','<p>Qué tal va esto</p>\r\n<p>Muy bien, y tú?</b>','2012-02-20 00:42:24'),(7,5,'Probando','<ol>\r\n<li>Enga ya</li>\r\n</ol>\r\n','2012-02-20 00:42:52'),(8,5,'iSisisisi','sisisiis','2012-02-20 00:45:11'),(9,4,'Genial','Sí, joder!','2012-02-20 00:55:36');
 /*!40000 ALTER TABLE `elections_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +357,7 @@ CREATE TABLE `elections_votes` (
   `voted_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `elections_votes_6c1886de` (`candidate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -365,6 +366,7 @@ CREATE TABLE `elections_votes` (
 
 LOCK TABLES `elections_votes` WRITE;
 /*!40000 ALTER TABLE `elections_votes` DISABLE KEYS */;
+INSERT INTO `elections_votes` VALUES (1,4,2,'127.0.0.1','2012-02-19 14:47:41'),(2,2,3,'127.0.0.1','2012-02-19 14:47:44'),(3,4,1,'127.0.0.1','2012-02-19 14:47:57'),(11,6,4,'127.0.0.1','2012-02-19 17:24:53'),(16,3,3,'127.0.0.1','2012-02-19 18:57:18'),(12,5,3,'127.0.0.1','2012-02-19 17:30:42'),(17,3,2,'127.0.0.1','2012-02-20 01:04:53');
 /*!40000 ALTER TABLE `elections_votes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -377,4 +379,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-02-18 13:49:47
+-- Dump completed on 2012-02-20  1:06:02

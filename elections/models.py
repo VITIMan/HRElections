@@ -32,9 +32,10 @@ class Comment(models.Model):
     name = models.CharField(max_length=255, verbose_name="Autor")
     text = models.TextField(help_text="Comentario")
     published_at = models.DateTimeField(auto_now_add = True, help_text="Fecha de publicación")
+    ip = models.CharField(max_length=255, verbose_name="IP")
 
 class Votes(models.Model):
     candidate = models.ForeignKey(Candidate)
     stars = IntegerRangeField(min_value=1, max_value=5, verbose_name='Puntuación')
-    ip = models.CharField(max_length=255, verbose_name="IP") #TODO OJO, una IP por candidato pero puedes votar a todos los candidatos. Sólo por el mismo día????
+    ip = models.CharField(max_length=255, verbose_name="IP") #una IP por candidato pero puedes votar a todos los candidatos. Sólo por el mismo día????
     voted_at = models.DateTimeField(auto_now_add = True, help_text="Fecha de publicación")

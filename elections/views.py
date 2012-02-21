@@ -166,17 +166,29 @@ def candidate(request, id):
     except Candidate.DoesNotExist:
         pass #404
 
-
+    comment_mucho = False
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             text = form.cleaned_data['text']
-            comment = Comment(candidate=candidate,
-                name = name,
-                text = text,
-                )
-            comment.save()
+            ip = _get_client_ip(request)
+
+            comments_now = Comment.objects.filter(
+                    candidate=candidate,
+                    ip=ip,
+                    published_at__gte=datetime.datetime.today() - datetime.timedelta(minutes=5) # 5 comment in 5 minutes
+                    )
+            print len(comments_now)
+            if len(comments_now)<5: 
+                comment = Comment(candidate=candidate,
+                    name = name,
+                    text = text,
+                    ip = ip,
+                    )
+                comment.save()
+            else:
+                comment_mucho = True
             form = CommentForm()   
     else: 
         form = CommentForm()
@@ -184,4 +196,5 @@ def candidate(request, id):
         'candidate':candidate,
         'comments':comments,
         'form': form,
+        'comment_mucho': comment_mucho,
         }, context_instance=RequestContext(request))

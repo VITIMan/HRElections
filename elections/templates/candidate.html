@@ -25,6 +25,12 @@ HR ELECTIONS - {{ candidate.name }}
     <div class="span5">
         {# Comentarios #}
         {# Formulario de comentario #}
+        {% if comment_mucho %}
+        <div id="vote_well"class="alert alert-block alert-error fade in">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                <h4 class="alert-heading">Espérate un poco y luego sigues.</h4>
+        </div>
+        {% endif %}
         <form class="well" method="post" action="{% url candidate candidate.id %}">{% csrf_token %}
             {% if form.non_field_errors %}
             <div id="alert error" class="alert alert-block alert-error fade in">
@@ -65,4 +71,9 @@ HR ELECTIONS - {{ candidate.name }}
         {% endfor %}
     </div>
 </div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-transition.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-alert.js"></script>
 {% endblock %}

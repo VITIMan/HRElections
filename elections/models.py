@@ -39,3 +39,13 @@ class Votes(models.Model):
     stars = IntegerRangeField(min_value=1, max_value=5, verbose_name='Puntuación')
     ip = models.CharField(max_length=255, verbose_name="IP") #una IP por candidato pero puedes votar a todos los candidatos. Sólo por el mismo día????
     voted_at = models.DateTimeField(auto_now_add = True, help_text="Fecha de publicación")
+
+class Ranking(models.Model):
+    candidate = models.ForeignKey(Candidate)
+    stars = models.BigIntegerField( default=0)
+    avg = models.FloatField(default=0)
+    votes = models.BigIntegerField(default=0)
+    avg_points = models.FloatField(default=0)
+    votes_points = models.FloatField(default=0)
+    published_at = models.DateTimeField(auto_now_add = True, help_text="Fecha de publicación")
+    ranking = models.IntegerField(default=0)

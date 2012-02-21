@@ -3,12 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from models import Candidate, Comment, Votes
+from models import Candidate, Comment, Votes, Ranking
 from forms import LoginForm, RegisterForm, CandidateForm, CommentForm
 
 from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 import datetime
+from django.db.models import Max
 
 def index(request):
     already_voted = 0
@@ -16,7 +17,12 @@ def index(request):
     vote_success = False
     id = request.GET.get('id', 0)
     stars = request.GET.get('v', 0)
-    
+    registered = request.GET.get('r','false') 
+    if registered == 'true':
+        registered = True
+    else:
+        registered = False
+    print registered
     if id!=0 and stars!=0:
         try:
             if int(stars) not in range(1,6):
@@ -41,9 +47,20 @@ def index(request):
             vote_well = False  
         except Candidate.DoesNotExist:
             vote_well = False
-    candidates = Candidate.objects.all()
+    #candidates = Candidate.objects.all()
+    p=Ranking.objects.all().aggregate(Max('published_at')) 
+    #ranking=Ranking.objects.all().order_by('published_at')[:Candidate.objects.count()]
+    ranking=Ranking.objects.filter(published_at=p['published_at__max'])
+    candidates = [rank.candidate for rank in ranking]
+    no_rank_candidates = Candidate.objects.exclude(pk__in=[c.pk for c in candidates])
+    candidates +=no_rank_candidates
+    #print no_rank_candidates
+    #for rank in ranking:
+    #    print rank.ranking
+    #    print rank.candidate
     return render_to_response('index.html', {
         'candidates':candidates,
+        'registered':registered,
         'already_voted':already_voted,
         'vote_well': vote_well,
         'vote_success':vote_success,
@@ -79,7 +96,7 @@ def register(request):
             password = form.cleaned_data['password']
             user=User.objects.create_user(username, username, password)
             user.save()
-            return HttpResponseRedirect('/') # Redirect after POST
+            return HttpResponseRedirect('/?r=true') # Redirect after POST
     else:
         form = RegisterForm() # An unbound form
     return render_to_response('register.html', {
@@ -118,6 +135,7 @@ def publish(request):
                         description=description,
                         user=User.objects.get(username__exact=request.user),
                         )
+
             candidate.save()
             published=True
     else:
@@ -192,6 +210,7 @@ def candidate(request, id):
     return render_to_response('candidate.html', {
         'candidate':candidate,
         'comments':comments,
+        'full_path': request.build_absolute_uri(),
         'form': form,
         'comment_mucho': comment_mucho,
         }, context_instance=RequestContext(request))

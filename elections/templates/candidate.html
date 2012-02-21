@@ -31,6 +31,11 @@ HR ELECTIONS - {{ candidate.name }}
                 <h4 class="alert-heading">Espérate un poco y luego sigues.</h4>
         </div>
         {% endif %}
+        <div id="social">
+        <a rel="nofollow" target="_blank" href="http://www.facebook.com/sharer.php?u={{ full_path }}"><img src="{{ STATIC_URL}}facebook.png" alt="fb_share_icon"></a>
+        <a rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?url={{ full_path }}&amp;text={{ candidate.name|slice:":75"}}&amp;hashtags=HRElections"><img src="{{ STATIC_URL }}twitter.png" alt="twitter_icon"></a>
+        <div class="g-plusone"></div>
+    </div>
         <form class="well" method="post" action="{% url candidate candidate.id %}">{% csrf_token %}
             {% if form.non_field_errors %}
             <div id="alert error" class="alert alert-block alert-error fade in">
@@ -76,4 +81,7 @@ HR ELECTIONS - {{ candidate.name }}
 <script src="{{ STATIC_URL }}js/jquery.js"></script>
 <script src="{{ STATIC_URL }}js/bootstrap-transition.js"></script>
 <script src="{{ STATIC_URL }}js/bootstrap-alert.js"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+    {lang: 'es'}
+</script>
 {% endblock %}

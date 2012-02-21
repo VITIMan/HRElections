@@ -12,6 +12,12 @@ HR ELECTIONS - Vota a tu candidato
 </header>
 <div class="row">
     {# Parte superior #}
+    {% if registered %}
+    <div id="vote_well"class="alert alert-block alert-info fade in">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <h4 class="alert-heading">Registrado correctamente. Haz Login para entrar.</h4>
+    </div>
+    {% endif %}
     {% if not vote_well %}
     <div id="vote_well"class="alert alert-block alert-error fade in">
             <a class="close" data-dismiss="alert" href="#">×</a>
@@ -64,6 +70,11 @@ HR ELECTIONS - Vota a tu candidato
         <h2>LOREM IPSUM JODER</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus, risus ac vehicula fermentum, magna orci feugiat libero, vel fermentum dui quam venenatis dui. Nulla facilisi. Suspendisse potenti. Cras ac nulla massa, sit amet lacinia lacus. Nunc pellentesque augue sed elit hendrerit imperdiet ornare risus imperdiet. Vivamus eu quam eget orci suscipit volutpat. Duis ultrices, tellus sed euismod dapibus, orci lectus vestibulum enim, in porta massa erat a magna.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus, risus ac vehicula fermentum, magna orci feugiat libero, vel fermentum dui quam venenatis dui. Nulla facilisi. Suspendisse potenti. Cras ac nulla massa, sit amet lacinia lacus.</p>
+        <div id="social">
+        <a rel="nofollow" target="_blank" href="http://www.facebook.com/sharer.php?u={{ full_path }}"><img src="{{ STATIC_URL}}facebook.png" alt="fb_share_icon"></a>
+        <a rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?url={{ full_path }}&amp;text=Vota%20a%20tu%20favorito%20para%20líder%20de%20la%20HR&amp;hashtags=HRElections"><img src="{{ STATIC_URL }}twitter.png" alt="twitter_icon"></a>
+        <div class="g-plusone"></div>
+    </div>
     </div>
 </div>
 {# Tarjetitas con los candidatos #}
@@ -72,6 +83,9 @@ HR ELECTIONS - Vota a tu candidato
     <ul class="thumbnails">
     
     {% for candidate in candidates %}
+    {% if forloop.counter|divisibleby:"3" %}
+    <div class="row">
+        {% endif %}
     <li class="span4">
         <div class="thumbnail">
         {# Thumbnail, titulo, estrellas y texto #}
@@ -91,12 +105,13 @@ HR ELECTIONS - Vota a tu candidato
                 {% endif %}
                 <h4><a href="{% url candidate candidate.id %}">{{ candidate.name }}</a></h4>
             <p>{{ candidate.description|striptags|truncatewords:"20" }}</p>
-            <p class="ranking">
-            RANKING
-            </p>
-            </div>
+            <p class="ranking"><span class="btn btn-success">{{ forloop.counter }}
+            </span></p>
         </div>
     </li>
+    {% if forloop.counter|divisibleby:"3" %}
+    </div>
+        {% endif %}
     {% endfor %}
     </ul>
 </div>
@@ -110,5 +125,8 @@ HR ELECTIONS - Vota a tu candidato
 <script src="{{ STATIC_URL }}js/bootstrap-transition.js"></script>
 <script src="{{ STATIC_URL }}js/bootstrap-alert.js"></script>
 <script src="{{ STATIC_URL }}js/bootstrap-carousel.js"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+    {lang: 'es'}
+</script>
 <script src="{{ STATIC_URL }}js/index.js"></script>
 {% endblock %}

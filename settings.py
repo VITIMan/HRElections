@@ -4,7 +4,7 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Victoriano Navarro Aguilar', 'vitiman@gmail.com'),
 )
 
 EMAIL_HOST = 'smtp.webfaction.com'

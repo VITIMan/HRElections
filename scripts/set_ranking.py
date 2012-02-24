@@ -6,11 +6,11 @@ from MySQLdb.cursors import DictCursor
 import datetime
 
 HOST=u'localhost'
-#USER=u'vitiman_hr_elec'
-#PASS=u'murcia'
-USER=u'admin'
-PASS=u'P0s0t147369'
-DB=u'hr_elections'
+USER=u'vitiman_hr_elec'
+PASS=u'murcia'
+#USER=u'admin'
+#PASS=u'P0s0t147369'
+DB=u'vitiman_hr_elec'
 
 MAX_VOTES_POINTS = 3
 MAX_AVG_POINTS = 5
@@ -54,7 +54,8 @@ try:
     max_votes = results_avg[0]['votes']
     if max_votes >0:
         for result in results_avg:
-            result['votes_points']=float((result['votes']*MAX_VOTES_POINTS)/max_votes)
+            result['votes_points']=(result['votes']*MAX_VOTES_POINTS)/float(max_votes)
+            print "Votes::{0},MAX_VOTES::{1},max_votes::{2},vote_points::{3}".format(result['votes'],MAX_VOTES_POINTS,max_votes,result['votes_points'])
     else:
         for result in results_avg:
             result['votes_points']=0

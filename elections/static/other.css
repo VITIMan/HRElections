@@ -16,6 +16,9 @@ body {
 
 .thumbnail img{
     height:163px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .dateformat span{
     text-align:right;
@@ -23,7 +26,6 @@ body {
 .ranking{
     text-align: right;
 }
-
 /* RATING 
 .rating {
     float:left;

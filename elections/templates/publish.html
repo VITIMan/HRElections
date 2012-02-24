@@ -16,6 +16,11 @@ HR ELECTIONS - Publicación de candidatura
     Tu candidatura ha sido publicada/editada.
 </div>
 {% endif %}
+{% if deleted %}
+<div class="alert alert-success">
+    Tu candidatura ha sido eliminada.
+</div>
+{% endif %}
 
 <div class="row">
     <div class="span8">
@@ -78,13 +83,33 @@ HR ELECTIONS - Publicación de candidatura
                 {{ form.editing }}
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                    <button type="submit" class="btn btn-danger">Borrar candidatura</button>
+                    <a class="btn btn-danger" data-toggle="modal" href="#myModal" >Borrar candidatura</a>
                 </div>
             </fieldset>
         </form>
+
+        <div class="modal hide fade" id="myModal">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Borrar candidatura</h3>
+          </div>
+          <div class="modal-body">
+            <p>¿Estás totalmente seguro?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="/publish/?d=y" class="btn btn-primary">Sí, joder</a>
+            <a href="#" data-dismiss="modal" class="btn">Tengo miedo</a>
+          </div>
+        </div>
+
     </div>
     <div class="span4">
         {# Texto de ayuda #}
     </div>
 </div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-transition.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-modal.js"></script>
 {% endblock %}

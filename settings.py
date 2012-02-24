@@ -7,6 +7,13 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+EMAIL_HOST = 'smtp.webfaction.com'
+EMAIL_HOST_USER = 'vitiman'
+EMAIL_HOST_PASSWORD = 'murcia'
+DEFAULT_FROM_EMAIL = 'hr_elections@vitiman.webfactional.com'
+SERVER_EMAIL = 'hr_elections@vitiman.webfactional.com'
+
+
 MANAGERS = ADMINS
 
 DATABASES = {

@@ -22,7 +22,6 @@ def index(request):
         registered = True
     else:
         registered = False
-    print registered
     if id!=0 and stars!=0:
         try:
             if int(stars) not in range(1,6):
@@ -111,6 +110,15 @@ def publish(request):
     # Ver si está vacío
     published=False   
     new = False
+    deleted = False
+    delete = request.GET.get('d', 'n')
+    if delete == 'y':
+        try:
+            candidate=Candidate.objects.get(user=User.objects.get(username__exact=request.user))
+            candidate.delete()
+            deleted = True
+        except Candidate.DoesNotExist:
+            pass
     if request.method == 'POST':
         form = CandidateForm(request.POST)
         if form.is_valid():
@@ -157,6 +165,7 @@ def publish(request):
         'form': form,
         'published': published,
         'new' : new,
+        'deleted': deleted,
         }, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')

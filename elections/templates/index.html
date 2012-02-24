@@ -12,6 +12,12 @@ HR ELECTIONS - Vota a tu candidato
 </header>
 <div class="row">
     {# Parte superior #}
+    {% if not user.is_authenticated %}
+    <div id="vote_well"class="alert alert-block alert-info fade in">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <h4 class="alert-heading">Presenta tu candidatura. Date a conocer, regístrate y publica tu candidatura para liderar la #HermandadRobot</h4>
+    </div>
+    {% endif %}
     {% if registered %}
     <div id="vote_well"class="alert alert-block alert-info fade in">
             <a class="close" data-dismiss="alert" href="#">×</a>
@@ -37,7 +43,7 @@ HR ELECTIONS - Vota a tu candidato
           <!-- Carousel items -->
           <div class="carousel-inner">
             <div class="item active">
-                <img src="{{ STATIC_URL }}c1.jpg">
+                <img src="{{ STATIC_URL }}collage_outsiders.jpg">
                 <div class="carousel-caption">
                     <h4>Puaj, para ti</h4>
                     <p>Come queso, y come limonada. Venga rápido que va a explotar</p>
@@ -45,7 +51,7 @@ HR ELECTIONS - Vota a tu candidato
             </div> 
             
             <div class="item">
-                <img src="{{ STATIC_URL }}c2.jpg">
+                <img src="{{ STATIC_URL }}collage_samuelers2.jpg">
                 <div class="carousel-caption">
                     <h4>Puaj, para ti</h4>
                     <p>Come queso, y come limonada. Venga rápido que va a explotar</p>
@@ -71,8 +77,8 @@ HR ELECTIONS - Vota a tu candidato
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus, risus ac vehicula fermentum, magna orci feugiat libero, vel fermentum dui quam venenatis dui. Nulla facilisi. Suspendisse potenti. Cras ac nulla massa, sit amet lacinia lacus. Nunc pellentesque augue sed elit hendrerit imperdiet ornare risus imperdiet. Vivamus eu quam eget orci suscipit volutpat. Duis ultrices, tellus sed euismod dapibus, orci lectus vestibulum enim, in porta massa erat a magna.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus, risus ac vehicula fermentum, magna orci feugiat libero, vel fermentum dui quam venenatis dui. Nulla facilisi. Suspendisse potenti. Cras ac nulla massa, sit amet lacinia lacus.</p>
         <div id="social">
-        <a rel="nofollow" target="_blank" href="http://www.facebook.com/sharer.php?u={{ full_path }}"><img src="{{ STATIC_URL}}facebook.png" alt="fb_share_icon"></a>
-        <a rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?url={{ full_path }}&amp;text=Vota%20a%20tu%20favorito%20para%20líder%20de%20la%20HR&amp;hashtags=HRElections"><img src="{{ STATIC_URL }}twitter.png" alt="twitter_icon"></a>
+        <a rel="nofollow" target="_blank" href="http://www.facebook.com/sharer.php?u=http://vitiman.webfactional.com/"><img src="{{ STATIC_URL}}facebook.png" alt="fb_share_icon"></a>
+        <a rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?url=http://vitiman.webfactional.com/&amp;text=Vota%20a%20tu%20favorito%20para%20líder%20de%20la%20HR&amp;hashtags=HRElections"><img src="{{ STATIC_URL }}twitter.png" alt="twitter_icon"></a>
         <div class="g-plusone"></div>
     </div>
     </div>
@@ -90,7 +96,7 @@ HR ELECTIONS - Vota a tu candidato
         <div class="thumbnail">
         {# Thumbnail, titulo, estrellas y texto #}
             {# Imagen #}
-            <img src="{{ candidate.image }}">
+            <a href="{% url candidate candidate.id %}"><img src="{{ candidate.image }}"></a>
             <div class="caption">
                 {% if already_voted == candidate.id %}
                 <span class="label label-important">Ya has votado.</span>

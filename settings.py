@@ -10,8 +10,8 @@ ADMINS = (
 EMAIL_HOST = 'smtp.webfaction.com'
 EMAIL_HOST_USER = 'vitiman'
 EMAIL_HOST_PASSWORD = 'murcia'
-DEFAULT_FROM_EMAIL = 'hr_elections@vitiman.webfactional.com'
-SERVER_EMAIL = 'hr_elections@vitiman.webfactional.com'
+DEFAULT_FROM_EMAIL = 'vitiman@mail.webfaction.com'
+SERVER_EMAIL = 'vitiman@mail.webfaction.com'
 
 
 MANAGERS = ADMINS

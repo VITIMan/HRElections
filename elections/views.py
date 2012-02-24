@@ -12,7 +12,6 @@ import datetime
 from django.db.models import Max
 
 def index(request):
-    print 0/0
     already_voted = 0
     vote_well = True
     vote_success = False

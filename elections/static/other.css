@@ -26,6 +26,9 @@ body {
 .ranking{
     text-align: right;
 }
+.footer{
+    margin-top: 20px;
+}
 /* RATING 
 .rating {
     float:left;

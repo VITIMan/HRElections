@@ -13,6 +13,21 @@
         <link rel="icon" type="image/png" href="{{ STATIC_URL }}" />
         <link href="https://plus.google.com/105094160849695194580" rel="publisher" />
         {% block includes %}{% endblock %}
+        {% block analytics %}
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-29506008-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        {% endblock %}
     </head>
     <body>
         {# Navigation bar #}
@@ -63,11 +78,14 @@
         <div class="container">
         {% block content %}
         {% endblock %}
-        </div>
-        <footer>
+        <footer class="footer">
+        <div class="row span12" style="text-align: center;">
+            <p>2012 - Por <a href="http://twitter.com/vitiman" rel="nofollow" title="@vitiman">@vitiman</a> para la diversión</p>
+            </div>
         {% block footer %}
         {% endblock %}
         </footer>
+        </div>
         {% block javascript %}
         {% endblock %}
     </body>

@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic.simple import direct_to_template
 
+from elections.feeds import CommentFeed, CandidateFeed
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -30,6 +31,8 @@ urlpatterns = patterns('',
     url(r'^logout/','elections.views.logout_user', name='logout_user'),
     #url(r'^$', direct_to_template, {'template': 'soon.html'}),
     
+    url(r'^rss/candidates/', CandidateFeed()),
+    url(r'^rss/comments/', CommentFeed()),
     # url(r'^hr_elections/', include('hr_elections.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 class CandidateForm(forms.Form):
     name = forms.CharField(min_length=1, max_length=255, widget=forms.TextInput(attrs={'class':'span5', 'placeholder':'Nombre del partido'}))
     abbreviation = forms.CharField(min_length=1, max_length=255, widget=forms.TextInput(attrs={'class':'span5', 'placeholder':'Siglas del partido'}))
-    description = forms.CharField(min_length=1, widget=forms.Textarea(attrs={'class':'span5', 'rows':'15','placeholder':'Tus ideales, tus propuestas'}))
+    description = forms.CharField(min_length=1, widget=forms.Textarea(attrs={'class':'span5', 'rows':'20','placeholder':'Tus ideales, tus propuestas'}))
     image = forms.URLField(min_length=1, widget=forms.TextInput(attrs={'class':'span5', 'placeholder':'Enlace a la imagen'}))
     editing = forms.CharField(label='nop', widget=forms.HiddenInput)
 

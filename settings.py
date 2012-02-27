@@ -1,17 +1,16 @@
 # Django settings for hr_elections project.
-
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-     ('cool_admin', 'EMAIL'),
+     ('Victoriano Navarro Aguilar', 'vitiman@gmail.com'),
 )
 
-EMAIL_HOST = 'SMTP'
-EMAIL_HOST_USER = 'USER'
-EMAIL_HOST_PASSWORD = 'PASSWORD'
-DEFAULT_FROM_EMAIL = 'EMAIL'
-SERVER_EMAIL = 'EMAIL'
+EMAIL_HOST = 'smtp.webfaction.com'
+EMAIL_HOST_USER = 'vitiman'
+EMAIL_HOST_PASSWORD = 'murcia'
+DEFAULT_FROM_EMAIL = 'vitiman@mail.webfaction.com'
+SERVER_EMAIL = 'vitiman@mail.webfaction.com'
 
 
 MANAGERS = ADMINS
@@ -19,9 +18,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'hr_elections',                      # Or path to database file if using sqlite3.
-        'USER': 'hr_elections',                      # Not used with sqlite3.
-        'PASSWORD': 'PASWORD',                  # Not used with sqlite3.
+        'NAME': 'vitiman_hr_elec',                      # Or path to database file if using sqlite3.
+        'USER': 'vitiman_hr_elec',                      # Not used with sqlite3.
+        'PASSWORD': 'murcia',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }

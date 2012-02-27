@@ -6,6 +6,9 @@
 HR ELECTIONS - Vota a tu candidato
 {% endblock %}
 
+{% block includes %}
+<link rel="alternate" title="Últimas candidaturas" type="application/rss+xml" href="{{ host }}/rss/candidates/" />
+{% endblock %}
 {% block content %}
 <header class="head">
 <h1>Elecciones #HermandadRobot</h1>

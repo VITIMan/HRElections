@@ -6,6 +6,9 @@
 HR ELECTIONS - {{ candidate.name }}
 {% endblock %}
 
+{% block includes %}
+<link rel="alternate" title="Últimos comentarios" type="application/rss+xml" href="{{ host }}/rss/comments/" />
+{% endblock %}
 
 {% block content %}
 <div class="page-header">

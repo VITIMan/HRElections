@@ -22,12 +22,12 @@ urlpatterns = patterns('',
     # Examples:
 
     url(r'^$', 'elections.views.index', name='index'),
-    url(r'^login/', 'elections.views.login_user', name='login_user'),
-    url(r'^register/', 'elections.views.register', name='register'),
-    url(r'^publish/', 'elections.views.publish', name='publish'),
-    url(r'^candidate/(?P<id>\d+)/$', 'elections.views.candidate', name='candidate'),
-    url(r'^candidate/', 'elections.views.candidate', name='candidate'),
-    url(r'^logout/','elections.views.logout_user', name='logout_user'),
+    url(r'^(?i)login/', 'elections.views.login_user', name='login_user'),
+    url(r'^(?i)register/', 'elections.views.register', name='register'),
+    url(r'^(?i)publish/', 'elections.views.publish', name='publish'),
+    url(r'^(?i)candidate/(?P<id>\d+)', 'elections.views.candidate', name='candidate'),
+    #url(r'^candidate/', 'elections.views.candidate', name='candidate'),
+    url(r'^(?i)logout/','elections.views.logout_user', name='logout_user'),
     #url(r'^$', direct_to_template, {'template': 'soon.html'}),
     
     # url(r'^hr_elections/', include('hr_elections.foo.urls')),
@@ -36,5 +36,5 @@ urlpatterns = patterns('',
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^(?i)admin/', include(admin.site.urls)),
 )

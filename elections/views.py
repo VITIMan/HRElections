@@ -102,8 +102,8 @@ def register(request):
         'form':form,
         }, context_instance=RequestContext(request))
 
-def candidate(request):
-    return render_to_response('candidate.html', {}, context_instance=RequestContext(request))
+#def candidate(request):
+#    return render_to_response('candidate.html', {}, context_instance=RequestContext(request))
     
 @login_required(login_url='/login/')
 def publish(request):

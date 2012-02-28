@@ -29,7 +29,7 @@
         </script>
         {% endblock %}
     </head>
-    <body>
+    <body{% block body %}{% endblock body %}>
         {# Navigation bar #}
         {% block navbar %}
     <div class="navbar navbar-fixed-top">

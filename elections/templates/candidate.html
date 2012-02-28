@@ -10,6 +10,12 @@ HR ELECTIONS - {{ candidate.name }}
 <link rel="alternate" title="Últimos comentarios" type="application/rss+xml" href="{{ host }}/rss/comments/" />
 {% endblock %}
 
+{% block body %}
+{% if candidate.abbreviation == "PNWP" %}
+style="background:#cc66cc;"
+{% endif %}
+{% endblock body %}
+
 {% block content %}
 <div class="page-header">
     <h1>{{ candidate.name }} <small> {{ candidate.abbreviation }}</small></h1>

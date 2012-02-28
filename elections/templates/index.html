@@ -18,7 +18,8 @@ HR ELECTIONS - Vota a tu candidato
     {% if not user.is_authenticated %}
     <div id="vote_well"class="alert alert-block alert-info fade in">
             <a class="close" data-dismiss="alert" href="#">×</a>
-            <h4 class="alert-heading">Presenta tu candidatura. Date a conocer, regístrate y publica tu candidatura para liderar la #HermandadRobot</h4>
+            <h4 class="alert-heading">¡Las votaciones acaban el 15 de Marzo!</h4>
+            <p>¡Corre y presenta tu candidatura!</p>
     </div>
     {% endif %}
     {% if registered %}
@@ -70,8 +71,8 @@ HR ELECTIONS - Vota a tu candidato
     <ul class="thumbnails">
     
     {% for candidate in candidates %}
-    {% if forloop.counter|divisibleby:"3" %}
-    <div class="row">
+    {% if forloop.counter|add:"2"|divisibleby:"3" %}
+    <div class="row rowc">
         {% endif %}
     <li class="span4">
         <div class="thumbnail">

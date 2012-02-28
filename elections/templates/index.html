@@ -90,8 +90,8 @@ HR ELECTIONS - Vota a tu candidato
     <ul class="thumbnails">
     
     {% for candidate in candidates %}
-    {% if forloop.counter|divisibleby:"3" %}
-    <div class="row">
+    {% if forloop.counter|add:"2"|divisibleby:"3" %}
+    <div class="row rowc">
         {% endif %}
     <li class="span4">
         <div class="thumbnail">

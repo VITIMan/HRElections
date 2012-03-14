@@ -10,6 +10,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 import datetime
 from django.db.models import Max
+import random
 
 def index(request):
     already_voted = 0
@@ -53,6 +54,7 @@ def index(request):
     candidates = [rank.candidate for rank in ranking]
     no_rank_candidates = Candidate.objects.exclude(pk__in=[c.pk for c in candidates])
     candidates +=no_rank_candidates
+    random.shuffle(candidates)
     #print no_rank_candidates
     #for rank in ranking:
     #    print rank.ranking

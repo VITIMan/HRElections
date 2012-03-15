@@ -8,6 +8,8 @@ HR ELECTIONS - Vota a tu candidato
 
 {% block includes %}
 <link rel="alternate" title="Últimas candidaturas" type="application/rss+xml" href="{{ host }}/rss/candidates/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap-responsive.css" />
 {% endblock %}
 {% block content %}
 <header class="head">
@@ -80,16 +82,18 @@ HR ELECTIONS - Vota a tu candidato
             {# Imagen #}
             <a href="{% url candidate candidate.id %}"><img src="{{ candidate.image }}"></a>
             <div class="caption">
-                {% if already_voted == candidate.id %}
-                <span class="label label-important">Ya has votado.</span>
-                {% else %}
-                <fieldset class="rating">
-                    <a title="5 estrellas" href="/?id={{ candidate.id }}&v=5">5 estrellas</a>
-                    <a title="4 estrellas" href="/?id={{ candidate.id }}&v=4">4 estrellas</a>
-                    <a title="3 estrellas" href="/?id={{ candidate.id }}&v=3">3 estrellas</a>
-                    <a title="2 estrellas" href="/?id={{ candidate.id }}&v=2">2 estrellas</a>
-                    <a title="1 estrella" href="/?id={{ candidate.id }}&v=1">1 estrella</a>
-                </fieldset>
+                {% if False %}
+                    {% if already_voted == candidate.id %}
+                    <span class="label label-important">Ya has votado.</span>
+                    {% else %}
+                    <fieldset class="rating">
+                        <a title="5 estrellas" href="/?id={{ candidate.id }}&v=5">5 estrellas</a>
+                        <a title="4 estrellas" href="/?id={{ candidate.id }}&v=4">4 estrellas</a>
+                        <a title="3 estrellas" href="/?id={{ candidate.id }}&v=3">3 estrellas</a>
+                        <a title="2 estrellas" href="/?id={{ candidate.id }}&v=2">2 estrellas</a>
+                        <a title="1 estrella" href="/?id={{ candidate.id }}&v=1">1 estrella</a>
+                    </fieldset>
+                    {% endif %}
                 {% endif %}
                 <h4><a href="{% url candidate candidate.id %}">{{ candidate.name }}</a></h4>
             <p>{{ candidate.description|striptags|truncatewords:"20" }}</p>

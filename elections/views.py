@@ -23,30 +23,31 @@ def index(request):
         registered = True
     else:
         registered = False
-    if id!=0 and stars!=0:
-        try:
-            if int(stars) not in range(1,6):
-                raise ValueError()
-            #Aquí capturaremos id y estrellitas.
-            ip = _get_client_ip(request)
-            candidate = Candidate.objects.get(id=id)
-            votes_today=Votes.objects.filter(
-                    candidate = candidate
-                    ,ip=ip,
-                    voted_at__gte = datetime.date.today()) 
-            if len(votes_today) == 0:
-                vote = Votes(candidate=candidate,
-                        stars=stars,
-                        ip=ip)
 
-                vote.save()
-                vote_success = True
-            else:
-                already_voted = candidate.id
-        except ValueError:
-            vote_well = False  
-        except Candidate.DoesNotExist:
-            vote_well = False
+    #if id!=0 and stars!=0:
+    #    try:
+    #        if int(stars) not in range(1,6):
+    #            raise ValueError()
+    #        #Aquí capturaremos id y estrellitas.
+    #        ip = _get_client_ip(request)
+    #        candidate = Candidate.objects.get(id=id)
+    #        votes_today=Votes.objects.filter(
+    #                candidate = candidate
+    #                ,ip=ip,
+    #                voted_at__gte = datetime.date.today()) 
+    #        if len(votes_today) == 0:
+    #            vote = Votes(candidate=candidate,
+    #                    stars=stars,
+    #                    ip=ip)
+
+    #            vote.save()
+    #            vote_success = True
+    #        else:
+    #            already_voted = candidate.id
+    #    except ValueError:
+    #        vote_well = False  
+    #    except Candidate.DoesNotExist:
+    #        vote_well = False
     #candidates = Candidate.objects.all()
     p=Ranking.objects.all().aggregate(Max('published_at')) 
     #ranking=Ranking.objects.all().order_by('published_at')[:Candidate.objects.count()]

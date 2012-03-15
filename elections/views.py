@@ -54,7 +54,7 @@ def index(request):
     candidates = [rank.candidate for rank in ranking]
     no_rank_candidates = Candidate.objects.exclude(pk__in=[c.pk for c in candidates])
     candidates +=no_rank_candidates
-    random.shuffle(candidates)
+    #random.shuffle(candidates)
     #print no_rank_candidates
     #for rank in ranking:
     #    print rank.ranking

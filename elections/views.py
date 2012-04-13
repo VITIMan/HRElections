@@ -13,6 +13,11 @@ from django.db.models import Max
 import random
 
 def index(request):
+    """
+    Main page. Basically lists all candidates, ordered by Ranking.
+    You can give stars to a candidate daily from 1 to 5 stars.
+    It's possible to use a GET URL to give votes (proxy hacking fun)
+    """
     already_voted = 0
     vote_well = True
     vote_success = False
@@ -24,37 +29,42 @@ def index(request):
     else:
         registered = False
 
-    #if id!=0 and stars!=0:
-    #    try:
-    #        if int(stars) not in range(1,6):
-    #            raise ValueError()
-    #        #Aquí capturaremos id y estrellitas.
-    #        ip = _get_client_ip(request)
-    #        candidate = Candidate.objects.get(id=id)
-    #        votes_today=Votes.objects.filter(
-    #                candidate = candidate
-    #                ,ip=ip,
-    #                voted_at__gte = datetime.date.today()) 
-    #        if len(votes_today) == 0:
-    #            vote = Votes(candidate=candidate,
-    #                    stars=stars,
-    #                    ip=ip)
+    if id!=0 and stars!=0:
+        # Processing GET values
+        try:
+            # Stars in range
+            if int(stars) not in range(1,6):
+                raise ValueError()
+            ip = _get_client_ip(request)
 
-    #            vote.save()
-    #            vote_success = True
-    #        else:
-    #            already_voted = candidate.id
-    #    except ValueError:
-    #        vote_well = False  
-    #    except Candidate.DoesNotExist:
-    #        vote_well = False
-    #candidates = Candidate.objects.all()
+            candidate = Candidate.objects.get(id=id)
+            votes_today=Votes.objects.filter(
+                    candidate = candidate
+                    ,ip=ip,
+                    voted_at__gte = datetime.date.today()) 
+            # Filter by IP daily
+            if len(votes_today) == 0:
+                vote = Votes(candidate=candidate,
+                        stars=stars,
+                        ip=ip)
+
+                vote.save()
+                vote_success = True
+            else:
+                already_voted = candidate.id
+        except ValueError:
+            vote_well = False
+        except Candidate.DoesNotExist:
+            vote_well = False
+    candidates = Candidate.objects.all()
+    # Processing ranking. It's possible new candidates that ranking scripts haven't registered in time perior
     p=Ranking.objects.all().aggregate(Max('published_at')) 
-    #ranking=Ranking.objects.all().order_by('published_at')[:Candidate.objects.count()]
+    ranking=Ranking.objects.all().order_by('published_at')[:Candidate.objects.count()]
     ranking=Ranking.objects.filter(published_at=p['published_at__max'])
     candidates = [rank.candidate for rank in ranking]
     no_rank_candidates = Candidate.objects.exclude(pk__in=[c.pk for c in candidates])
     candidates +=no_rank_candidates
+    # Just for fun, shuffle candidates :)
     #random.shuffle(candidates)
     #print no_rank_candidates
     #for rank in ranking:
@@ -69,6 +79,9 @@ def index(request):
         }, context_instance=RequestContext(request))
 
 def login_user(request):
+    """
+    Login View. Processing Login Form, and authenticate if valid.
+    """
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -89,6 +102,10 @@ def login_user(request):
 
 
 def register(request):
+    """
+    Register form.
+    User registration, useremail, password and repeat password
+    """
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -110,7 +127,11 @@ def register(request):
     
 @login_required(login_url='/login/')
 def publish(request):
-    # Ver si está vacío
+    """
+    Publish candidate form. Only for registered users
+    You can edit this candidate as you wish. CLEditor is provided to render a pretty description
+    All fields are mandatory
+    """
     published=False   
     new = False
     deleted = False
@@ -173,11 +194,17 @@ def publish(request):
 
 @login_required(login_url='/login/')
 def logout_user(request):
+    """
+    Just a logout view
+    """
     logout(request)
     return HttpResponseRedirect("/")
 
 
 def _get_client_ip(request):
+    """
+    Obtaining client ip, registered in votes and comments
+    """
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
@@ -186,7 +213,11 @@ def _get_client_ip(request):
     return ip
 
 def candidate(request, id):
-    
+    """
+    Candidate page.
+    Showing description and comment list
+    Comments are filtered by ip in time
+    """
     try:
         candidate=get_object_or_404(Candidate, pk=id)
         comments = Comment.objects.filter(candidate=candidate).order_by('-published_at')

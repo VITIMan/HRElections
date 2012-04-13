@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class IntegerRangeField(models.IntegerField):
+    """
+    An Integer Range Field. From stackoverflow
+    """
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
         self.min_value, self.max_value = min_value, max_value
         models.IntegerField.__init__(self, verbose_name, name, **kwargs)
@@ -14,6 +17,10 @@ class IntegerRangeField(models.IntegerField):
         return super(IntegerRangeField, self).formfield(**defaults)
 
 class Candidate(models.Model):
+    """
+    Candidate Model
+    User is ForeignKey and unique
+    """
     name = models.CharField(max_length=255, verbose_name="Nombre del partido")
     abbreviation = models.CharField(max_length=255, verbose_name=u"Siglas del partido")
     description = models.TextField(help_text="Descripción del partido")
@@ -28,6 +35,10 @@ class Candidate(models.Model):
 #    type = models.CharField(max_length=255, verbose_name="Tipo, vídeo o imagen")
 
 class Comment(models.Model):
+    """
+    Comment model
+    It stores ip comment from
+    """
     candidate = models.ForeignKey(Candidate)
     name = models.CharField(max_length=255, verbose_name="Autor")
     text = models.TextField(help_text="Comentario")
@@ -35,12 +46,20 @@ class Comment(models.Model):
     ip = models.CharField(max_length=255, verbose_name="IP")
 
 class Votes(models.Model):
+    """
+    Votes model
+    It stores ip avoiding overflow votes, except proxies
+    """
     candidate = models.ForeignKey(Candidate)
     stars = IntegerRangeField(min_value=1, max_value=5, verbose_name='Puntuación')
     ip = models.CharField(max_length=255, verbose_name="IP") #una IP por candidato pero puedes votar a todos los candidatos. Sólo por el mismo día????
     voted_at = models.DateTimeField(auto_now_add = True, help_text="Fecha de publicación")
 
 class Ranking(models.Model):
+    """
+    Ranking model
+    In ranking_script calcules average stars and max votes
+    """
     candidate = models.ForeignKey(Candidate)
     stars = models.BigIntegerField( default=0)
     avg = models.FloatField(default=0)

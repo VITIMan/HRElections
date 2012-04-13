@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+"""
+Calculate ranking
+Setting a max points in Votes -- MAX_VOTES_POINTS
+Setting a max points in average stars -- MAX_AVG_POINTS
+Calculating -rule of three- in both maximumns value.
+Then adding this results and set ranking order
+"""
 
 import MySQLdb
 import os
@@ -6,11 +13,9 @@ from MySQLdb.cursors import DictCursor
 import datetime
 
 HOST=u'localhost'
-USER=u'vitiman_hr_elec'
-PASS=u'murcia'
-#USER=u'admin'
-#PASS=u'P0s0t147369'
-DB=u'vitiman_hr_elec'
+USER=u'USER'
+PASS=u'PASS'
+DB=u'hr_elections'
 
 MAX_VOTES_POINTS = 3
 MAX_AVG_POINTS = 5
@@ -23,6 +28,7 @@ get_votes='select `stars` from `elections_votes` where `candidate_id`=%s'
 get_candidates='select `id` from `elections_candidate`'
 set_today="insert into `elections_ranking` (`candidate_id`, `stars`, `avg`, `votes`, `votes_points`, `avg_points`, `ranking`, `published_at`) values (%s, %s, %s, %s, %s, %s, %s, %s)" 
 results = []
+date_now = datetime.datetime.now() 
 try:
     cursor.execute(get_candidates)
     candidates=[result['id'] for result in cursor.fetchall()]
@@ -49,7 +55,7 @@ try:
     else:
         for result in results_avg:
             result['avg_points']=0
-        #Total de votos
+        #Total votes
     results_avg = sorted(results_avg, key=lambda k: k['votes'], reverse=True)
     max_votes = results_avg[0]['votes']
     if max_votes >0:
@@ -60,11 +66,11 @@ try:
         for result in results_avg:
             result['votes_points']=0
     results_avg = sorted(results_avg, key=lambda k: k['avg_points']+k['votes_points'], reverse=True)
-    #Inserción elections_ranking
+    #elections_ranking insertion
     #cursor=db.cursor()
     for ranking, r in enumerate(results_avg):
         #print set_today %  (r['candidate'], r['stars'], r['avg'], r['votes'], r['votes_points'], r['avg_points'], ranking, datetime.datetime.today())
-        cursor.execute(set_today, (r['candidate'], r['stars'], r['avg'], r['votes'], r['votes_points'], r['avg_points'], ranking+1,datetime.datetime.now() ))
+        cursor.execute(set_today, (r['candidate'], r['stars'], r['avg'], r['votes'], r['votes_points'], r['avg_points'], ranking+1, date_now ))
 
     cursor.close()
 except Exception, e:

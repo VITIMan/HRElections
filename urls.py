@@ -40,4 +40,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+
+    # REST api include, testing piston
+    (r'^api/', include('hr_elections.rest.urls')),
 )
+

@@ -1,9 +1,9 @@
-{# Template correspondiente a la home de la web #}
+{# index web #}
 
 {% extends "base.html" %}
 
 {% block title %}
-HR ELECTIONS - Vota a tu candidato
+HR ELECTIONS - Vote your candidate
 {% endblock %}
 
 {% block includes %}
@@ -20,8 +20,8 @@ HR ELECTIONS - Vota a tu candidato
     {% if not user.is_authenticated %}
     <div id="vote_well"class="alert alert-block alert-info fade in">
             <a class="close" data-dismiss="alert" href="#">×</a>
-            <h4 class="alert-heading">¡Las votaciones acaban el 15 de Marzo!</h4>
-            <p>¡Corre y presenta tu candidatura!</p>
+            <h4 class="alert-heading">Just an alert message!</h4>
+            <p>Publish your candidate!</p>
     </div>
     {% endif %}
     {% if registered %}
@@ -46,19 +46,13 @@ HR ELECTIONS - Vota a tu candidato
     <div class="span8">
         {# Carousel #}
         <div id="carou" class="carousel slide">
-            {% include "slide3.html" %}
+            {% include "slide1.html" %}
         </div>
         
     </div>
     <div class="span4">
         <h2>HR ELECTIONS</h2>
-        {% if False %}
-        <p>Porque todo conlleva un cambio... o no.</p><p>Porque las cosas cambian... o no.</p><p>Porque ahora tienes la oportunidad de tomar el mando... o de que te humillen para los restos</p>
-        {% endif %}
-        <p>Arranca la campaña y se empiezan a ver las primeras sorpresas: ve preparando la tuya.</p> 
-        <p>Preséntate, vota y/o hackea la web para encumbrar a tu partido favorito</p>
-        <p>Que luego no se diga.</p>
-        
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam commodo nulla in dolor faucibus semper. Praesent luctus, velit congue hendrerit lobortis, orci urna pulvinar orci, at eleifend dui felis eu eros. Fusce mattis porta dui, ac volutpat mi facilisis quis. Phasellus sit amet risus augue. Ut sagittis libero nisl. Mauris egestas dui ultrices sapien faucibus egestas blandit elit vehicula. Nullam at risus non sem condimentum adipiscing. Vestibulum ut porta odio. Mauris non orci in nibh bibendum dapibus vitae nec tortor. Phasellus at posuere lectus. In hac habitasse platea dictumst.</p> 
         <div id="social">
             <a title="Últimos candidatos" rel="nofollow" target="_blank" href="{{ host }}/rss/candidates/"><img src="{{ STATIC_URL }}rss.png" alt="Últimos candidatos"></a>
         <a rel="nofollow" target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.hermandadrobot.com/"><img src="{{ STATIC_URL}}facebook.png" alt="fb_share_icon"></a>
@@ -67,8 +61,7 @@ HR ELECTIONS - Vota a tu candidato
         </div>
     </div>
 </div>
-{# Tarjetitas con los candidatos #}
-{# un for que pone una fila con dos span #}
+{# Candidate Thumbnails #}
 <div class="row">
     <ul class="thumbnails">
     
@@ -78,7 +71,7 @@ HR ELECTIONS - Vota a tu candidato
         {% endif %}
     <li class="span4">
         <div class="thumbnail">
-        {# Thumbnail, titulo, estrellas y texto #}
+        {# Thumbnail, title, stars y text #}
             {# Imagen #}
             <a href="{% url candidate candidate.id %}"><img src="{{ candidate.image }}"></a>
             <div class="caption">

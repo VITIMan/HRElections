@@ -1,0 +1,5 @@
+__author__ = "vitiman"
+__license__ = ""
+__revision__ = "$Id$"
+__version__ = "0.1"
+__status__ = "development"

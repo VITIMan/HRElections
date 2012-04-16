@@ -1,0 +1,15 @@
+Simple voting web.
+
+Made for friends like a contest to choose our friend leader. People make profile for parties.
+
+People can vote with stars (from 1 to 5 stars).
+
+And there is a trick, using GET Method to vote, you can use proxies to vote. Cheating is possible :D
+
+Tools
+- Django 1.3
+- MySQL
+- Bootstrap Twitter
+- JQuery and Bootstrap plugins
+- CLEditor
+- Django piston for REST testing
